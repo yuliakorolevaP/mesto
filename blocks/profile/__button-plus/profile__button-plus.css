@@ -1,13 +1,17 @@
-.profile__button_plus{
+.profile__button-plus{
   max-width: 150px;
   background-color: transparent;
   max-height: 50px;
-  border: 2px solid #FFFFFF;
-  border-radius: 2px;
+  padding: 0;
+  border: none;
+}
+
+.profile__button-plus:hover{
+  opacity: 0.6;
 }
 
 @media all and (max-width:690px){
-  .profile__button_plus{
+  .profile__button-plus{
     max-width: 282px;
     width: 282px;
     margin: 36px auto 0 auto;

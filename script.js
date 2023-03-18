@@ -1,9 +1,9 @@
-let buttompensil = document.querySelector('.profile__button_pensil');
+let buttompensil = document.querySelector('.profile__button-pensil');
 let element = document.querySelector('.popup');
 let buttomexit = document.querySelector('.popup__exit');
 let formElement = document.querySelector('.popup__form');
-let text = document.querySelector('.popup_input_type_text');
-let type=document.querySelector('.popup_input_type_status');  
+let text = document.querySelector('.popup__input_text');
+let type=document.querySelector('.popup__input_status');  
 let title = document.querySelector('.profile__title'); 
 let subtitle=document.querySelector('.profile__subtitle');
 function showClick() {

@@ -15,10 +15,11 @@
 @import url(../blocks/profile/__image/profile__image.css);
 @import url(../blocks/profile/__edit/profile__edit.css);
 @import url(../blocks/profile/__button/profile__button.css);
-@import url(../blocks/profile/__button/_img/profile__button_img.css);
-@import url(../blocks/profile/__button/_pensil/profile__button_pensil.css);
-@import url(../blocks/profile/__button/_plus/profile__button_plus.css);
-@import url(../blocks/profile/__button/_pensilimg/profile__button_pensilimg.css);
+
+@import url(../blocks/profile/__button-plus/profile__button-plus.css);
+@import url(../blocks/profile/__button-pensil/profile__button-pensil.css);
+@import url(../blocks/profile/__button-plus/_img/profile__button_img.css);
+@import url(../blocks/profile/__button-pensil/_pensilimg/profile__button-pensil_pensilimg.css);
 @import url(../vendor/fonts/fonts.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
