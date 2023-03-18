@@ -1,7 +1,11 @@
 .profile__button_pensil{
-  max-width: 24px;
-  margin: 14px  0 0 18px;
+  width: 24px;
+  height: 24px;
+  margin: 14px 0 0 18px;
   align-self: baseline;
+  background-color: transparent;
+  border: 1px solid #FFFFFF;
+  padding: 0;
 }
 
 @media all and (max-width:1130px){
@@ -12,7 +16,7 @@
 
 @media all and (max-width:690px){
   .profile__button_pensil{
-    margin: 0  0 0 18px;
+    margin: 0;
     max-width: 18px;
     align-self: flex-end;
     margin-bottom: 6px;
