@@ -1,0 +1,26 @@
+.profile{
+  color: #ffffff;
+  margin: 0 200px 50px 200px;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  max-width: 880px;
+  align-items: center;
+}
+
+@media all and (max-width:880px){
+  .profile{
+    margin: 0 auto 50px auto;
+    max-width: 774px;
+  }
+}
+
+@media all and (max-width:690px){
+  .profile{
+    margin: 0 19px 50px 19px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

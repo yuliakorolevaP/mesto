@@ -1,0 +1,13 @@
+.popup__exit{
+  border: 0;
+  width: 32px;
+  height: 32px;
+  background-image: url(../../../images/Close\ Icon.svg);
+  z-index: 4;
+  background-color: transparent;
+  background-position: center;
+}
+
+.popup__exit:hover{
+  opacity: 0.6;
+}

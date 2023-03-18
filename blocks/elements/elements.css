@@ -1,0 +1,19 @@
+.elements{
+  color: #FFFFFF;
+  margin: 0 200px 66px 200px;
+  padding: 0;
+  max-width: 880px;
+}
+
+@media all and (max-width:880px){
+  .elements{
+    margin: 20px;
+  }
+}
+
+@media all and (max-width:470px){
+  .elements{
+    max-width: 282px;
+    margin: 0 auto;
+  }
+}

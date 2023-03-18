@@ -1,0 +1,16 @@
+.profile__button_plus{
+  max-width: 150px;
+  background-color: transparent;
+  max-height: 50px;
+  border: 2px solid #FFFFFF;
+  border-radius: 2px;
+}
+
+@media all and (max-width:690px){
+  .profile__button_plus{
+    max-width: 282px;
+    width: 282px;
+    margin: 36px auto 0 auto;
+    align-self: stretch;
+  }
+}
