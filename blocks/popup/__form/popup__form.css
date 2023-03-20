@@ -5,14 +5,11 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  border-style: solid;
   width: 430px;
-  height: 330px;
 }
 
 @media all and (max-width:500px){
   .popup__form{
     width: 282px;
-    height: 322px;
   }
 }

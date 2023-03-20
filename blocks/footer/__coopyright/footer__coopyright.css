@@ -1,4 +1,4 @@
-.footer__copyright{
+.footer__coopyright{
   max-width: 100%;
   font-style: normal;
   font-weight: 400;
@@ -9,9 +9,7 @@
 }
 
 @media all and (max-width:470px){
-  .footer__copyright{
-    font-style: normal;
-    font-weight: 400;
+  .footer__coopyright{
     font-size: 14px;
     line-height: 17px;
   }

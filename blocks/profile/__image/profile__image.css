@@ -6,8 +6,6 @@
 
 @media all and (max-width:690px){
   .profile__image{
-    max-width: 120px;
     margin: 0 0 26px 0;
-    padding: 0;
   }
 }

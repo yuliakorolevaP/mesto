@@ -2,8 +2,6 @@
   width: 100%;
   padding: 0;
   margin: 0;
-  border-style: solid;
-  border-color: royalblue;
   position:fixed;
   top: 0;
   left: 0;
@@ -23,7 +21,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #2A2C2F;
+  background: #000000;
   z-index: -1;
   opacity: 0.5;
 }

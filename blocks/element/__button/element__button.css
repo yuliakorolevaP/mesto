@@ -1,11 +1,16 @@
 .element__button{
-  max-width: 22px;
+  width: 22px;
   margin: auto 0 auto 0;
   background-color: transparent;
   border: none;
-  padding: 0;
+  padding: 11px;
   height: 22px;
   align-self: flex-end;
+  cursor: pointer;
+  background-image: url(../../../images/Vectorheard.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px 22px;
 }
 
 .element__button:hover{

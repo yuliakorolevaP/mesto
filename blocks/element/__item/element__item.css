@@ -6,6 +6,9 @@
   padding: 0;
   background-color: #ffffff;
   border-radius: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media all and (max-width:880px){
