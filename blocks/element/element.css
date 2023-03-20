@@ -12,12 +12,8 @@
 @media all and (max-width:920px){
   .element{
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media all and (max-width:880px){
-  .element{
     column-gap: auto;
+    margin: 0 auto;
   }
 }
 
@@ -25,5 +21,6 @@
   .element{
     grid-template-columns: repeat(1, 1fr);
     column-gap: 0;
+    margin: 0;
   }
 }
