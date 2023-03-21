@@ -12,9 +12,10 @@
 
 @media all and (max-width:690px){
   .profile__subtitle{
-    margin-top: 14px;
     font-size: 14px;
     line-height: 17px;
     text-align: center;
+    max-width: 192px;
+    margin: 14px auto 0 auto;
   }
 }

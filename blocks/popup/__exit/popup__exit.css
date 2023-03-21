@@ -11,17 +11,20 @@
   position: relative;
   bottom: 8px;
   left: 40px;
+  cursor: pointer;
 }
 
 .popup__exit:hover{
   opacity: 0.6;
 }
 
-@media all and (max-width:500px){
+@media all and (max-width:550px){
   .popup__exit{
     width: 20px;
     padding: 10px;
     margin-bottom: 16px;
     background-size: 20px;
+    left: 0;
+    bottom: 0;
   }
 }
