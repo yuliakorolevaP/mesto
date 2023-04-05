@@ -9,6 +9,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  position: relative;
 }
 
 @media all and (max-width:920px){
