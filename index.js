@@ -90,7 +90,7 @@ function addImage(a) {
   });
   imageZoom.addEventListener('click', function(){
     openPopup(popupZoomImage);
-    document.querySelector('.popup__title_zoom').textContent=a.name;
+    document.querySelector('.popup__title-zoom').textContent=a.name;
     document.querySelector('.popup__image').alt=a.name;
     document.querySelector('.popup__image').src=a.link;
   }); 

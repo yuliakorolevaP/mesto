@@ -33,5 +33,5 @@
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__exit/popup__exit.css);
 @import url(../blocks/page/__container/page__container.css);
-@import url(../blocks/popup/__title/_zoom/popup__title_zoom.css);
+@import url(../blocks/popup/__title-zoom/popup__title-zoom.css);
 @import url(../blocks/popup/__image/popup__image.css);
