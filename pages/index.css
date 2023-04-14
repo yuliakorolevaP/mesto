@@ -1,3 +1,4 @@
+
 @import url(../vendor/normalize.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/header/header.css);
@@ -35,3 +36,7 @@
 @import url(../blocks/page/__container/page__container.css);
 @import url(../blocks/popup/__title-zoom/popup__title-zoom.css);
 @import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__button/_disabled/popup__button_disabled.css);
+@import url(../blocks/popup/__label/popup__label.css);
+@import url(../blocks/popup/__input-error/popup__input-error.css);
+@import url(../blocks/popup/__input/_type/_error/popup__input_type_error.css);

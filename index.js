@@ -43,30 +43,49 @@ const popupZoomImage=document.querySelector('.popup_zoom');
 const elements=document.querySelector('.elements');
 const titleZoom=document.querySelector('.popup__title-zoom');
 const popupImage=document.querySelector('.popup__image');
+
+const deactivateButton=function (popup) {
+  const buttonElement =popup.querySelector('.popup__button');
+  buttonElement.classList.add('popup__button_disabled');
+}
+
 const openPopup = function (popup) {
   popup.classList.add('popup_opened');
+  popup.addEventListener('mousedown', closeAll);
 }
 
 const closePopup = function (popup) {
   popup.classList.remove('popup_opened');
 }
 
+
+const closeAll = (evt)=>{
+if (evt.target===evt.currentTarget)
+{
+  const popupOpened=document.querySelector('.popup_opened');
+  closePopup(popupOpened);
+}
+}
 buttompensil.addEventListener('click', function(){
   openPopup(popupUpdate);
+  deactivateButton(popupUpdate);
   text.value= title.textContent;
   type.value= subtitle.textContent;
 });
 
-buttomexit.addEventListener('click', function(){
-  closePopup(popupUpdate);
+// находим все крестики проекта по универсальному селектору
+const closeButtons = document.querySelectorAll('.popup__exit');
+
+closeButtons.forEach((button) => {
+  // находим 1 раз ближайший к крестику попап 
+  const popup = button.closest('.popup');
+  // устанавливаем обработчик закрытия на крестик
+  button.addEventListener('click', () => closePopup(popup));
 });
 
 buttomplus.addEventListener('click', function(){
   openPopup(popupAddImage);
-});
-
-buttomexitAddImage.addEventListener('click', function(){
-  closePopup(popupAddImage);
+  deactivateButton(popupAddImage);
 });
 
 formElement.addEventListener('submit', function(evt) {
@@ -117,6 +136,3 @@ formElementAdd.addEventListener('submit', function (evt) {
   closePopup(popupAddImage);
   evt.target.reset();
 });  
-buttomexitZoom.addEventListener('click', function(){
-  closePopup(popupZoomImage);
-}); 

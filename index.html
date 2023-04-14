@@ -43,32 +43,46 @@
   <div class="popup popup_edit">
     <div class="popup__container">
       <button aria-label="Закрыть" type="button" class="popup__exit"></button>
-      <form name="profile-form" class="popup__form">
+      <form name="profile-form" class="popup__form" novalidate>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" placeholder="Имя" class="popup__input popup__input_type_text" name="typeInput">
-        <input type="text" placeholder="О себе" class="popup__input popup__input_type_status" name="statusInput">
-        <button type="submit" class="popup__button">Сохранить</button>
+        <label class="popup__label">
+          <input id="text-input" type="text" minlength="2" maxlength="40" required placeholder="Имя" class="popup__input popup__input_type_text" name="typeInput">
+          <span class="text-input-error popup__input-error"></span>
+        </label>
+        <label class="popup__label">
+          <input id="status-input" type="text" minlength="2" maxlength="200" required placeholder="О себе" class="popup__input popup__input_type_status" name="statusInput">
+          <span class="status-input-error popup__input-error"></span>
+      </label>
+        <button type="submit" class="popup__button popup__button_disabled">Сохранить</button>
+
       </form>
     </div>
   </div>
   <div class="popup popup_image">
     <div class="popup__container">
-      <button aria-label="Закрыть" type="button" class="popup__exit popup__exit_image"></button>
-      <form name="profile-form-image" class="popup__form popup__form_image">
+      <button aria-label="Закрыть" type="button" class="popup__exit"></button>
+      <form name="profile-form-image" class="popup__form popup__form_image" novalidate>
         <h2 class="popup__title">Новое место</h2>
-        <input type="text" placeholder="Название" class="popup__input popup__input_type_name" name="nameInput">
-        <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_src" name="srcInput">
+        <label class="popup__label">
+          <input id="name-input" type="text" minlength="2" maxlength="30" required placeholder="Название" class="popup__input popup__input_type_name" name="nameInput">
+          <span class="popup__input-error name-input-error"></span> 
+        </label>
+        <label class="popup__label">
+          <input id="url-input" type="url" required placeholder="Ссылка на картинку" class="popup__input popup__input_type_src" name="srcInput">
+          <span class="popup__input-error url-input-error"></span> 
+        </label>
         <button type="submit" class="popup__button">Сохранить</button>
       </form>
     </div>
   </div>
   <div class="popup popup_zoom">
     <div class="popup__container">
-      <button aria-label="Закрыть" type="button" class="popup__exit popup__exit_zoom"></button>
+      <button aria-label="Закрыть" type="button" class="popup__exit"></button>
       <img class="popup__image" src="#" alt="">
       <h4 class="popup__title-zoom"></h4>
     </div>
   </div>
   <script src="index.js"></script>  
+  <script src="validate.js"></script> 
 </body>
 </html>
