@@ -8,51 +8,51 @@ const configValidation={
 }; 
 
 // Функция, которая добавляет класс с ошибкой
-const showInputError = (formElement, inputElement, errorMessage, inputErrorClass, errorClass) => {
+const showInputError = (formElement, inputElement, errorMessage, configValidation) => {
   // Находим элемент ошибки внутри самой функции
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   // Остальной код такой же
-  inputElement.classList.add(inputErrorClass);
+  inputElement.classList.add(configValidation.inputErrorClass);
   // Заменим содержимое span с ошибкой на переданный параметр
   errorElement.textContent = errorMessage;
-  errorElement.classList.add(errorClass);
+  errorElement.classList.add(configValidation.errorClass);
 };
 
 // Функция, которая удаляет класс с ошибкой
-const hideInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
+const hideInputError = (formElement, inputElement, configValidation) => {
   // Находим элемент ошибки
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   // Остальной код такой же
-  inputElement.classList.remove(inputErrorClass);
-  errorElement.classList.remove(errorClass);
+  inputElement.classList.remove(configValidation.inputErrorClass);
+  errorElement.classList.remove(configValidation.errorClass);
   errorElement.textContent = '';
 }; 
 
 // Функция, которая проверяет валидность поля
-const isValid = (formElement, inputElement) => {
+const isValid = (formElement, inputElement, configValidation) => {
   if (!inputElement.validity.valid) {
     // Если поле не проходит валидацию, покажем ошибку
-    showInputError(formElement, inputElement, inputElement.validationMessage, configValidation.inputErrorClass, configValidation.errorClass);
+    showInputError(formElement, inputElement, inputElement.validationMessage, configValidation);
   } else {
     // Если проходит, скроем
-    hideInputError(formElement, inputElement, configValidation.inputErrorClass, configValidation.errorClass);
+    hideInputError(formElement, inputElement, configValidation);
   }
 };
 
-function setEventListeners(formElement, inputSelector, submitButtonSelector) {
+function setEventListeners(formElement, configValidation) {
   // Находим все поля внутри формы,
   // сделаем из них массив методом Array.from
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-  const buttonElement = formElement.querySelector(submitButtonSelector);
-  toggleButtonState(inputList, buttonElement, configValidation.inactiveButtonClass);
+  const inputList = Array.from(formElement.querySelectorAll(configValidation.inputSelector));
+  const buttonElement = formElement.querySelector(configValidation.submitButtonSelector);
+  toggleButtonState(inputList, buttonElement, configValidation);
   // Обойдём все элементы полученной коллекции
   inputList.forEach((inputElement) => {
     // каждому полю добавим обработчик события input
     inputElement.addEventListener('input', () => {
       // Внутри колбэка вызовем isValid,
       // передав ей форму и проверяемый элемент
-      isValid(formElement, inputElement)
-      toggleButtonState(inputList, buttonElement, configValidation.inactiveButtonClass);
+      isValid(formElement, inputElement, configValidation)
+      toggleButtonState(inputList, buttonElement, configValidation);
       });
   });
 }; 
@@ -65,7 +65,7 @@ const enableValidation = (configValidation) => {
   formList.forEach((formElement) => {
     // Для каждой формы вызовем функцию setEventListeners,
     // передав ей элемент формы
-    setEventListeners(formElement, configValidation.inputSelector, configValidation.submitButtonSelector);
+    setEventListeners(formElement, configValidation);
   });
 };
   
@@ -76,12 +76,12 @@ function hasInvalidInput(inputList){
   }); 
 }
   
-function toggleButtonState(inputList, buttonElement, inactiveButtonClass){
+function toggleButtonState(inputList, buttonElement, configValidation){
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.classList.add(configValidation.inactiveButtonClass);
     buttonElement.setAttribute('disabled', 'disabled');
   } else {
-    buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.classList.remove(configValidation.inactiveButtonClass);
     buttonElement.removeAttribute('disabled');
   }
 }

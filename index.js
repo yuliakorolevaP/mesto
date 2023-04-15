@@ -53,13 +53,14 @@ const deactivateButton=function (popup) {
 const openPopup = function (popup) {
   popup.classList.add('popup_opened');
   popup.addEventListener('mousedown', closeAll);
-  popup.addEventListener('keydown', closeEsc);
+  document.addEventListener('keydown', closeByEscape);
 }
 
 const closePopup = function (popup) {
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('mousedown', closeAll);
+  document.removeEventListener('keydown', closeByEscape);
 }
-
 
 const closeAll = (evt)=>{
   if (evt.target===evt.currentTarget){
@@ -67,9 +68,10 @@ const closeAll = (evt)=>{
   }
 }
 
-const closeEsc =(evt)=>{
-  if(evt.key==="Escape"){
-    closePopup(evt.target);
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened')// нашли открытый попап
+    closePopup(openedPopup);//закрыли попап с помощью функции 
   }
 }
 
@@ -129,7 +131,7 @@ function createCard(a) {
 }
 
 initialCards.forEach(elem=>{
-  let newImage = createCard(elem);
+  const newImage = createCard(elem);
   elements.append(newImage);
 });
 
