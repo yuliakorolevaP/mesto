@@ -47,11 +47,13 @@ const popupImage=document.querySelector('.popup__image');
 const deactivateButton=function (popup) {
   const buttonElement =popup.querySelector('.popup__button');
   buttonElement.classList.add('popup__button_disabled');
+  buttonElement.setAttribute('disabled', 'disabled');
 }
 
 const openPopup = function (popup) {
   popup.classList.add('popup_opened');
   popup.addEventListener('mousedown', closeAll);
+  popup.addEventListener('keydown', closeEsc);
 }
 
 const closePopup = function (popup) {
@@ -60,12 +62,17 @@ const closePopup = function (popup) {
 
 
 const closeAll = (evt)=>{
-if (evt.target===evt.currentTarget)
-{
-  const popupOpened=document.querySelector('.popup_opened');
-  closePopup(popupOpened);
+  if (evt.target===evt.currentTarget){
+    closePopup(evt.target);
+  }
 }
+
+const closeEsc =(evt)=>{
+  if(evt.key==="Escape"){
+    closePopup(evt.target);
+  }
 }
+
 buttompensil.addEventListener('click', function(){
   openPopup(popupUpdate);
   deactivateButton(popupUpdate);
@@ -90,8 +97,8 @@ buttomplus.addEventListener('click', function(){
 
 formElement.addEventListener('submit', function(evt) {
   evt.preventDefault();
-  let textvalue = text.value;
-  let typevalue = type.value;
+  const textvalue = text.value;
+  const typevalue = type.value;
   title.textContent=textvalue;
   subtitle.textContent=typevalue;
   closePopup(popupUpdate);
