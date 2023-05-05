@@ -1,3 +1,13 @@
+import FormValidator from './FormValidator.js';
+import Card from "./Card.js";
+const configValidation={
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+}; 
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -25,7 +35,6 @@ const initialCards = [
   }
 ]; 
 const buttompensil = document.querySelector('.profile__button-pensil');
-const buttomexit = document.querySelector('.popup__exit');
 const formElement = document.querySelector('.popup__form');
 const text = document.querySelector('.popup__input_type_text');
 const type=document.querySelector('.popup__input_type_status');  
@@ -34,16 +43,17 @@ const subtitle=document.querySelector('.profile__subtitle');
 const buttomplus = document.querySelector('.profile__button-plus');
 const popupAddImage = document.querySelector('.popup_image');
 const popupUpdate = document.querySelector('.popup_edit');
-const buttomexitAddImage = document.querySelector('.popup__exit_image');
 const nameImage = document.querySelector('.popup__input_type_name');
 const srcImage=document.querySelector('.popup__input_type_src');
 const formElementAdd = document.querySelector('.popup__form_image');
-const buttomexitZoom = document.querySelector('.popup__exit_zoom');
 const popupZoomImage=document.querySelector('.popup_zoom');
 const elements=document.querySelector('.elements');
 const titleZoom=document.querySelector('.popup__title-zoom');
 const popupImage=document.querySelector('.popup__image');
-
+const formValidator= new FormValidator(configValidation, formElement);
+formValidator.enableValidation();
+const formValidatorImage= new FormValidator(configValidation, formElementAdd);
+formValidatorImage.enableValidation();
 const deactivateButton=function (popup) {
   const buttonElement =popup.querySelector('.popup__button');
   buttonElement.classList.add('popup__button_disabled');
@@ -106,42 +116,27 @@ formElement.addEventListener('submit', function(evt) {
   closePopup(popupUpdate);
 });
 
-function createCard(a) {
-  const imageTemplate = document.querySelector('#element-template').content;
-  const image = imageTemplate.querySelector('.element__item').cloneNode(true);
-  const imageZoom=image.querySelector('.element__image');
-  const detetebutton=image.querySelector('.element__button-delete');
-  const likebutton=image.querySelector('.element__button');
-  detetebutton.addEventListener('click', ()=>{
-    image.remove();
-  });
-  likebutton.addEventListener('click', ()=>{
-    likebutton.classList.toggle('element__button_active');
-  });
-  imageZoom.addEventListener('click', function(){
-    openPopup(popupZoomImage);
-    titleZoom.textContent=a.name;
-    popupImage.alt=a.name;
-    popupImage.src=a.link;
-  }); 
-  image.querySelector('.element__title').textContent=a.name;
-  image.querySelector('.element__image').alt=a.name;
-  image.querySelector('.element__image').src=a.link;
-  return image;
-}
-
-initialCards.forEach(elem=>{
-  const newImage = createCard(elem);
-  elements.append(newImage);
-});
+initialCards.forEach((item) => {
+  // Создадим экземпляр карточки
+  const card = new Card(item.name, item.link, '#element-template');
+  // Создаём карточку и возвращаем наружу
+  const cardElement = card.generateCard();
+  // Добавляем в DOM
+  elements.append(cardElement);
+}); 
 
 formElementAdd.addEventListener('submit', function (evt) {
   evt.preventDefault();
-  const newImage = createCard({
-    name: nameImage.value,
-    link: srcImage.value
-  });
+  const card = new Card(nameImage.value, srcImage.value, '#element-template');
+  const newImage = card.generateCard();
   elements.prepend(newImage);
   closePopup(popupAddImage);
   evt.target.reset();
 });  
+
+export default function handleCardClick(name, link) {
+  titleZoom.textContent=name;
+  popupImage.alt=name;
+  popupImage.src=link;
+  openPopup(popupZoomImage);
+}
