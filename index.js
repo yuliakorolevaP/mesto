@@ -54,10 +54,12 @@ const formValidator= new FormValidator(configValidation, formElement);
 formValidator.enableValidation();
 const formValidatorImage= new FormValidator(configValidation, formElementAdd);
 formValidatorImage.enableValidation();
-const deactivateButton=function (popup) {
-  const buttonElement =popup.querySelector('.popup__button');
-  buttonElement.classList.add('popup__button_disabled');
-  buttonElement.setAttribute('disabled', 'disabled');
+function createCard(item) {
+  // тут создаете карточку и возвращаете ее
+const card = new Card(item.name, item.link, '#element-template');
+// Создаём карточку и возвращаем наружу
+const newImage = card.generateCard();
+return newImage;
 }
 
 const openPopup = function (popup) {
@@ -87,7 +89,7 @@ function closeByEscape(evt) {
 
 buttompensil.addEventListener('click', function(){
   openPopup(popupUpdate);
-  deactivateButton(popupUpdate);
+  formValidator.resetValidation();
   text.value= title.textContent;
   type.value= subtitle.textContent;
 });
@@ -104,7 +106,7 @@ closeButtons.forEach((button) => {
 
 buttomplus.addEventListener('click', function(){
   openPopup(popupAddImage);
-  deactivateButton(popupAddImage);
+  formValidatorImage.resetValidation();
 });
 
 formElement.addEventListener('submit', function(evt) {
@@ -117,19 +119,13 @@ formElement.addEventListener('submit', function(evt) {
 });
 
 initialCards.forEach((item) => {
-  // Создадим экземпляр карточки
-  const card = new Card(item.name, item.link, '#element-template');
-  // Создаём карточку и возвращаем наружу
-  const cardElement = card.generateCard();
-  // Добавляем в DOM
-  elements.append(cardElement);
-}); 
+  elements.append(createCard(item));
+ 
+ }); 
 
 formElementAdd.addEventListener('submit', function (evt) {
   evt.preventDefault();
-  const card = new Card(nameImage.value, srcImage.value, '#element-template');
-  const newImage = card.generateCard();
-  elements.prepend(newImage);
+  elements.prepend(createCard({name: nameImage.value, link: srcImage.value}));
   closePopup(popupAddImage);
   evt.target.reset();
 });  

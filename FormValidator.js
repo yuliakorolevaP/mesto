@@ -1,4 +1,3 @@
-// import {configValidation, formElement} from "./index.js";
 export default class FormValidator{
   constructor(configValidation, formElement){
     this._formElement=formElement;
@@ -10,15 +9,15 @@ export default class FormValidator{
   }
 
   _setEventListeners() {
-     const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-    const buttonElement =  this._formElement.querySelector(this._submitButtonSelector);
-    this._toggleButtonState(inputList, buttonElement);
+     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+    this._buttonElement =  this._formElement.querySelector(this._submitButtonSelector);
+    this._toggleButtonState(this._inputList, this._buttonElement);
     // Обойдём все элементы полученной коллекции
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       // каждому полю добавим обработчик события input
       inputElement.addEventListener('input', () => {
         this._isValid(inputElement);
-        this._toggleButtonState(inputList, buttonElement);
+        this._toggleButtonState(this._inputList, this._buttonElement);
       });
     });
   } 
@@ -70,6 +69,13 @@ export default class FormValidator{
 
   enableValidation(){
    this._setEventListeners();
+  }
+  resetValidation() {
+    this._toggleButtonState(this._inputList, this._buttonElement);
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement) 
+    });
+
   }
 }
 
