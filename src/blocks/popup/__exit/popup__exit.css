@@ -1,7 +1,7 @@
 .popup__exit{
   border: 0;
   width: 32px;
-  background-image: url(../../../images/Close\ Icon.svg);
+  background-image: url(../../../images/CloseIcon.svg);
   z-index: 4;
   background-color: transparent;
   background-position: center;

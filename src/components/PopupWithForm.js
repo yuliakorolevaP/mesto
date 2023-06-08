@@ -1,4 +1,4 @@
-import Popup from "./Popup.js";
+import Popup from "../components/Popup.js";
 export default class PopupWithForm extends Popup {
   // Принимает в конструктор селектор popup и callback сабмита формы
   constructor(popupSelector, { callbackFormSubmit }) {
