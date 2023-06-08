@@ -1,9 +1,10 @@
-import handleCardClick from "./index.js";
 export default class Card{
-  constructor(name, link, templateSelector) {
+  constructor(data, templateSelector, {handleCardClick}) {
     this._templateSelector = templateSelector;
-    this._name = name;
-    this._link = link;
+    this._name = data.name;
+    this._link = data.link;
+    this._handleCardClick=handleCardClick;
+
   }
   _getTemplate() {
     const cardElement = document
@@ -35,8 +36,7 @@ export default class Card{
       this._handleDeleteClick();
     });
     this._elementImage.addEventListener('click', () => {
-      handleCardClick(this._name, this._link);
-      // this._handleCardClick();
+    this._handleCardClick(this._name, this._link); 
     });
   }
   _handleLikeClick() {
