@@ -58,7 +58,6 @@ popupEditeProfile.setEventListeners();
 
 const popupAddCard = new PopupWithForm('#popup-image', {
   callbackFormSubmit: ()=> {
-    createCard({name: nameImage.value, link: srcImage.value});
     section.addItem(createCard({name: nameImage.value, link: srcImage.value})); 
     popupAddCard.close();
   }
@@ -67,7 +66,6 @@ popupAddCard.setEventListeners();
 
 const popupImage = new PopupWithImage('#popup-zoom');
 popupImage.setEventListeners();
-
 const userInfo=new UserInfo('.profile__title', '.profile__subtitle');
 const configValidation={
   inputSelector: '.popup__input',
