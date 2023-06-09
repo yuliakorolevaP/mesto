@@ -43,31 +43,32 @@ const elements=document.querySelector('.elements');
 const formElement = document.querySelector('.popup__form');
 const formElementAdd = document.querySelector('.popup__form_image');
 function createCard(item) {
-  const card = new Card(item, '#element-template', {handleCardClick: (name, image) => { ImagePopup.open(name, image)} });
+  const card = new Card(item, '#element-template', {handleCardClick: (name, image) => { popupImage.open(name, image)} });
   const newImage = card.generateCard(item);
   return newImage;
   }
 
-const popupEditeAvatar = new PopupWithForm('#popup-edit', {
+const popupEditeProfile = new PopupWithForm('#popup-edit', {
   callbackFormSubmit: () =>{
-    UserInfo1.setUserInfo(text.value, type.value);
-    Popupedit.close();
+    userInfo.setUserInfo(text.value, type.value);
+    popupEditeProfile.close();
   }
 });
-popupEditeAvatar.setEventListeners();
+popupEditeProfile.setEventListeners();
 
 const popupAddCard = new PopupWithForm('#popup-image', {
   callbackFormSubmit: ()=> {
-    elements.prepend(createCard({name: nameImage.value, link: srcImage.value}));
-    PopupAddImage.close();
+    createCard({name: nameImage.value, link: srcImage.value});
+    section.addItem(createCard({name: nameImage.value, link: srcImage.value})); 
+    popupAddCard.close();
   }
 });
 popupAddCard.setEventListeners();
 
-const ImagePopup = new PopupWithImage('#popup-zoom');
-ImagePopup.setEventListeners();
+const popupImage = new PopupWithImage('#popup-zoom');
+popupImage.setEventListeners();
 
-const UserInfo1=new UserInfo('.profile__title', '.profile__subtitle');
+const userInfo=new UserInfo('.profile__title', '.profile__subtitle');
 const configValidation={
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
@@ -83,22 +84,21 @@ formValidator.enableValidation();
 const formValidatorImage= new FormValidator(configValidation, formElementAdd);
 formValidatorImage.enableValidation();
 
-const Popupedit=new Popup('.popup_edit');
 buttompensil.addEventListener('click', function(){
-  Popupedit.open();
+  popupEditeProfile.open();
   formValidator.resetValidation();
-  const actualUserInfo = UserInfo1.getUserInfo();
+  const actualUserInfo = userInfo.getUserInfo();
   text.value = actualUserInfo.username;
   type.value = actualUserInfo.usersubtitle;
 });
 
-const PopupAddImage=new Popup('.popup_image');
+
 buttomplus.addEventListener('click', function(){
-  PopupAddImage.open();
+  popupAddCard.open();
   formValidatorImage.resetValidation();
 });
 
-const Section1=new Section({initialCards, renderer: (initialCards) => {
-  Section1.addItem(createCard(initialCards));
+const section=new Section({initialCards, renderer: (initialCards) => {
+  section.addItem(createCard(initialCards));
 }}, '.elements');
-Section1.renderItems(initialCards);
+section.renderItems(initialCards);
