@@ -28,11 +28,12 @@
               <li class="element__item">
                 <button  aria-label="Удаление" type="button" class="element__button-delete"></button>
                 <img class="element__image" src="#" alt=" ">
-                <div class="element__group"> 
-                  <h3 class="element__title"></h3>
-                  <div class="element__like-group" >
-                  <button aria-label="Лайк" type="button" class="element__button"></button>
-                  <p class="element__like-counter"></p><div>
+                  <div class="element__group"> 
+                    <h3 class="element__title"></h3>
+                    <div class="element__like-group">
+                    <button aria-label="Лайк" type="button" class="element__button"></button>
+                    <p class="element__like-counter"></p>
+                  <div>
                 </div> 
               </li>
         </template>
@@ -89,7 +90,7 @@
       <form name="profile-form-avatar" class="popup__form popup__form_avatar" novalidate>
       <h3 class="popup__title">Обновить аватар</h3>
         <label class="popup__label">
-          <input id="url-input" type="url" required placeholder="Ссылка на картинку" class="popup__input popup__input_type_src" name="srcInput">
+          <input id="src-input" type="url" required placeholder="Ссылка на картинку" class="popup__input popup__input_type_src" name="srcInput">
           <span class="popup__input-error url-input-error"></span> 
         </label>
         <button type="submit" class="popup__button" >Сохранить</button>
