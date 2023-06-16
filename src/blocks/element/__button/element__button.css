@@ -5,7 +5,7 @@
   border: none;
   padding: 11px;
   height: 22px;
-  align-self: flex-end;
+  align-self: flex-start;
   cursor: pointer;
   background-image: url(../../../images/Vectorheard.svg);
   background-repeat: no-repeat;
