@@ -7,6 +7,8 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Api from "../components/Api.js";
 import PopupNotice from "../components/PopupNotice.js";
+import {buttompensil, buttomavatar, text, type, buttomplus,formElement, formElementAdd, formElementAddAvatar, configValidation} from "../utils/constants.js";
+
 
 const apiConnect = new Api( {link: 'https://mesto.nomoreparties.co/v1/cohort-68',
 headers: {
@@ -21,14 +23,6 @@ const userInfo=new UserInfo(
 );
 
 let userId;
-const buttompensil = document.querySelector('.profile__button-pensil');
-const buttomavatar = document.querySelector('.profile__avatar-btn');
-const text = document.querySelector('.popup__input_type_text');
-const type=document.querySelector('.popup__input_type_status');  
-const buttomplus = document.querySelector('.profile__button-plus');
-const formElement = document.querySelector('.popup__form');
-const formElementAdd = document.querySelector('.popup__form_image');
-const formElementAddAvatar = document.querySelector('.popup__form_avatar');
 
 function createCard(item) {
   const card = new Card(item, '#element-template', userId, {cardId: item._id, authorId: item.owner._id},
@@ -119,17 +113,8 @@ const popupNoticeDelete = new PopupNotice("#delete-card", {
 });
 popupNoticeDelete.setEventListeners();
 
-
 const popupImage = new PopupWithImage('#popup-zoom');
 popupImage.setEventListeners();
-
-const configValidation={
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-}; 
 
 const formValidator= new FormValidator(configValidation, formElement);
 formValidator.enableValidation();
